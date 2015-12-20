@@ -1,20 +1,28 @@
 package ch.freshbits.pathshare.example;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.Date;
 
 import ch.freshbits.pathshare.sdk.Pathshare;
 import ch.freshbits.pathshare.sdk.helper.ResponseListener;
+import ch.freshbits.pathshare.sdk.helper.SessionExpirationListener;
+import ch.freshbits.pathshare.sdk.helper.SessionResponseListener;
 import ch.freshbits.pathshare.sdk.location.TrackingMode;
 import ch.freshbits.pathshare.sdk.model.Destination;
 import ch.freshbits.pathshare.sdk.model.Session;
 
 public class MainActivity extends Activity {
+    private static final String SESSION_PREFERENCES = "session";
+    private static final String SESSION_ID_KEY = "session_id";
+
     private Session mSession;
     private Button mCreateButton;
     private Button mJoinButton;
@@ -32,6 +40,8 @@ public class MainActivity extends Activity {
         initializeCreateButton();
         initializeJoinButton();
         initializeLeaveButton();
+
+        findSession();
     }
 
     private void initializeCreateButton() {
@@ -94,7 +104,6 @@ public class MainActivity extends Activity {
                     .setName("simple session")
                     .setTrackingMode(TrackingMode.SMART)
                     .build();
-            // TODO: set expiration listener
 
             getSession().save(new ResponseListener() {
                 @Override
@@ -102,6 +111,8 @@ public class MainActivity extends Activity {
                     Log.d("Session", "Success");
                     getCreateButton().setEnabled(false);
                     getJoinButton().setEnabled(true);
+
+                    saveSessionIdentifier();
                 }
 
                 @Override
@@ -147,6 +158,8 @@ public class MainActivity extends Activity {
                     Log.d("Leave", "Success");
                     getLeaveButton().setEnabled(false);
                     getCreateButton().setEnabled(true);
+
+                    deleteSessionIdentifier();
                 }
 
                 @Override
@@ -159,8 +172,71 @@ public class MainActivity extends Activity {
         }
     }
 
+    private void findSession() {
+        String identifier = getPreferences().getString(SESSION_ID_KEY, null);
+
+        if (identifier == null) { return; }
+
+        Pathshare.client().findSession(identifier, new SessionResponseListener() {
+            @Override
+            public void onSuccess(Session session) {
+                session.setSessionExpirationListener(new SessionExpirationListener() {
+                    @Override
+                    public void onExpiration() {
+                        handleSessionExpiration();
+                    }
+                });
+
+                setSession(session);
+
+                getCreateButton().setEnabled(false);
+                getJoinButton().setEnabled(true);
+                getLeaveButton().setEnabled(false);
+            }
+
+            @Override
+            public void onError() {
+                showToast("Something went wrong.");
+            }
+        });
+    }
+
+    private void handleSessionExpiration() {
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                getLeaveButton().setEnabled(false);
+                getCreateButton().setEnabled(true);
+                showToast("Session expired.");
+            }
+        });
+    }
+
+    private void saveSessionIdentifier() {
+        SharedPreferences.Editor editor = getPreferences().edit();
+        editor.putString(SESSION_ID_KEY, getSession().getIdentifier());
+        editor.apply();
+    }
+
+    private void deleteSessionIdentifier() {
+        getPreferences().edit().clear().commit();
+    }
+
+    private void showToast(String message) {
+        Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    private SharedPreferences getPreferences() {
+        return getApplicationContext().getSharedPreferences(SESSION_PREFERENCES, Context.MODE_MULTI_PROCESS);
+    }
+
     public Session getSession() {
         return mSession;
+    }
+
+    public void setSession(Session session) {
+        mSession = session;
     }
 
     public Button getCreateButton() {
