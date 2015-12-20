@@ -1,0 +1,605 @@
+**********************************************************************
+LICENSE INFORMATION (I/IV)
+**********************************************************************
+
+Version 1.02, 30. September 2015
+
+Copyright (C) 2015 freshbits GmbH info@freshbits.ch
+
+
+License freshbits Software Developer's Kit ("SDK") License Agreement
+FRESHBITS SOFTWARE DEVELOPMENT KIT LICENSE FOR FRESHBITS TECHNOLOGY NAMED PATHSHARE LOCATION SDK AND PATHSHARE LOCATION SHARING SDK
+
+Notice to user: THIS IS A LICENSE AGREEMENT BETWEEN YOU AND FRESHBITS. BY INDICATING YOUR ACCEPTANCE AS SET FORTH BELOW, YOU ACCEPT ALL THE TERMS AND CONDITIONS OF THIS LICENSE AGREEMENT. This License Agreement accompanies the freshbits Pathshare Location SDK and the freshbits Pathshare Location Sharing SDK for the software and related explanatory materials (the "SDK") and includes any upgrades, modified versions, updates, additions, and copies of the SDK licensed to You by freshbits. This copy of the SDK is licensed to You as the end user or to Your employer or another third party authorized to permit Your use of the SDK. You agree that this License Agreement is enforceable like any written negotiated agreement signed by you and that your use of the SDK constitutes acceptance of the Agreement terms. If you do not agree to the terms of this Agreement, do not use this SDK software.
+
+1. DEFINITIONS
+
+1.1 In this License Agreement, SDK means Libraries, Sample Code, Tools, API Information, documentation, including Documentation in online format, and related items.
+
+1.2 This License Agreement does not govern use of other freshbits services and products. See the end user license agreements accompanying the freshbits services and products for governing terms.
+
+1.3 Sample Code means software code that freshbits has included for You to incorporate into Your application programs.
+
+1.4 Tools refer to programs and Utilities that may be included for You to test or compile Your application programs.
+
+1.5 Documentation means any related explanatory materials accompanying the SDK.
+
+1.6 freshbits means freshbits GmbH, located at Hinterbergstrasse 18, 8604 Volketswil, Switzerland or one of its subsidiaries.
+
+1.7 Developer, You and Your refer to any person or entity acquiring or using the SDK under the terms of this License Agreement.
+
+2. LICENSE
+
+2.1 You understand that, in order to use freshbits SDKs and services, you need to purchase the required platform subscriptions for the corresponding platforms framework separately from your supplier at your own expense and responsibility.
+
+2.2 In consideration of your payment of the applicable platform subscription fees and acceptance of the terms of this Agreement, freshbits hereby grants to you certain nonexclusive and non-transferable rights limited by the terms of this Agreement. The SDK and services are licensed (not sold) to you for use strictly under the terms of this Agreement, and freshbits reserves all rights not expressly granted to you herein. You are entitled to include the SDKs into your software development environment and to statically link the SDK to software applications to be developed, compiled and provided/sold by you and to redistribute the SDK in a binary form as a part of your application to be distributed, directly and indirectly, to your end users in form of a single compiled binary file under the following conditions:
+
+2.2.1 The SDKs shall be distributed only as an integrated part of compiled software applications developed by or for you. Therefore, the SDKs must be linked to software applications to be developed by or for you, the software application must be compiled to binary object code and the SDKs embedded into the binary program code as an inseparable part. The SDKs shall only be redistributed as a part of a compiled binary application developed and distributed by or for you. Any plain redistribution of the SDKs as licensed is strictly prohibited.
+
+2.2.2 The SDKs shall only be provided as part of a software product or solution, incorporated into your Application, accessible by end users devices. A redistribution of the SDKs in a re-linkable "library" or similar form is explicitly prohibited.
+
+2.2.3 The software product or solution must be one single binary file that includes the incorporation of the SDKs binary object code.
+
+2.2.4 Any redistribution of source or header files is strictly prohibited.
+
+2.2.5 The SDKs in their current version shall only be used for the development and compilation of your application by you if you own a valid fully paid license granted, under a current running Agreement that has not been terminated, at the time SDKs are included into your software development environment, redistributed, compiled and/or distributed as an executable application.
+
+2.2.6 A redistribution or disclosure to third parties of the provided documentation or descriptions of interfaces is strictly prohibited.
+
+2.2.7 A single SDK license as granted to you in this license is always valid for exactly one app identifier (bundle identifier, app identifier, or api key) and platform, where platform is either Android or iOS.
+
+2.3 You may make a limited number of copies of the SDK to be used by Your employees or consultants as provided herein, and not for general business purposes, and such employees or consultants shall be subject to the obligations and restrictions in this license agreement.
+
+2.4 Maintenance of the SDKs, Updates to the SDKs, services and API usage licenses need to be purchased separately to the SDKs license.
+
+4. PROPRIETARY RIGHTS
+
+4.1 This Agreement does not transfer from freshbits to you any freshbits or third party intellectual property, and all right, title and interest in and to such property will remain (as between the parties) solely with freshbits.
+
+5. TERMS
+
+5.1 The SDK enables you to programmatically access portions of the Services. You agree to make users of any third-party applications aware of these terms via a commercially reasonable manner, and you acknowledge that third-party uses of any applications you create from the SDK shall be bound by these Terms of Service. You agree not to impose any terms or conditions that conflict with these Terms of Service on such third-party uses.
+
+5.2 freshbits may at its sole discretion restrict and limit access to the SDK. You agree to abide by these limitations (such as daily usage quotas). You agree not to use methods to get around these limitations. You also agree to make reasonable good faith efforts to ensure that others' uses of any tools or software you create that use the SDK do not result in any of the prohibited uses under these Terms of Service. freshbits, in its sole discretion, may at any time change the specifications of or restrict or limit access and or use to the SDK and services.
+
+5.3 You may not reverse engineer, decompile, or disassemble the SDK, except and only to the extent that such activity is expressly permitted by applicable law notwithstanding this limitation.
+
+5.4 freshbits is constantly updating the SDK and Services. Therefore freshbits may change the legal terms under which our Services are offered occasionally. If you disagree with our changes, then you must stop using the SDK and the Services. Your continued use of the SDK and Services will be subject to the new Terms.
+
+5.5 freshbits may terminate the development, maintenance or your access and/or use to all or any part of the Services or the SDK at any time, with or without cause, with or without notice, effective immediately. All provisions of this Agreement which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.
+
+6. DISCLAIMER OF WARRANTY
+
+6.1 The SDK and Services are provided “as is”. freshbits and its suppliers and licensors hereby disclaim all warranties of any kind, express or implied, including, without limitation, the warranties of merchantability, fitness for a particular purpose and non-infringement. Neither freshbits nor its suppliers and licensors, makes any warranty that the Website and the SDK will be error free or that access thereto will be continuous or uninterrupted.
+
+7. LIMITATION OF LIABILITY
+
+7.1 Notwithstanding any other provisions of this License Agreement, freshbits's liability to You under this License Agreement shall be limited to the amount paid by You for the SDK.
+
+7.2 YOU EXPRESSLY UNDERSTAND AND AGREE THAT IN NO EVENT WILL FRESHBITS OR ITS SUPPLIERS BE LIABLE TO YOU FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL, INCIDENTAL OR SPECIAL CONSEQUENTIAL OR EXEMPLARY DAMAGES THAT MAY BE INCURRED BY YOU INCLUDING DAMAGES FOR ANY LOST PROFITS, LOST SAVINGS, LOSS OF DATA, COSTS, FEES OR EXPENSES OF ANY KIND OR NATURE ARISING OUT OF ANY PROVISION OF THIS LICENSE AGREEMENT OR THE USE OR INABILITY TO USE THE ITEMS IN THE SDK, EVEN IF A FRESHBITS REPRESENTATIVE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, OR FOR ANY CLAIM BY ANY PARTY. Some jurisdictions do not allow the exclusion or limitation of incidental, consequential or special damages, so the above limitation or exclusion may not apply to You. Nothing contained in this Agreement shall prejudice the statutory rights of any party dealing as a consumer.
+
+8. INDEMNIFICATION
+
+8.1 To the maximum extent permitted by law, you agree to defend, indemnify and hold harmless freshbits, its affiliates and their respective directors, officers, employees and agents from and against any and all claims, actions, suits or proceedings, as well as any and all losses, liabilities, damages, costs and expenses (including reasonable attorneys fees) arising out of or accruing from (a) your use of the SDK and services, (b) any application you develop on the SDK and services that infringes any copyright, trademark, trade secret, trade dress, patent or other intellectual property right of any person or defames any person or violates their rights of publicity or privacy, and (c) any non-compliance by you with this License Agreement.
+
+9. CHOICE OF LAW
+
+9.1 freshbits is run out of Switzerland. This Agreement shall be governed by Swiss law and exclusive and sole jurisdiction is Zürich, Switzerland. If you use the Website or the SDK or Service, you are responsible for following applicable local laws.
+
+**********************************************************************
+LICENSE INFORMATION (II/IV)
+**********************************************************************
+
+The following dependencies are licensed by Greenrobot under the following license:
+
++ EventBus
+
+Copyright (c) 2015 greenrobot (http://greenrobot.org)
+
+-------------------------------------------------------------------------------
+
+                                Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright [yyyy] [name of copyright owner]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+**********************************************************************
+LICENSE INFORMATION (III/IV)
+**********************************************************************
+
+The following dependencies are licensed by mcxiaoke under the following license:
+
++ Volley
+
+Copyright (c) 2007 - 2015 mcxiaoke (http://mcxiaoke.com/)
+All rights reserved.
+
+Copyright (C) 2014 Xiaoke Zhang
+Copyright (C) 2011 The Android Open Source Project
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+**********************************************************************
+LICENSE INFORMATION (IV/IV)
+**********************************************************************
+
+The following dependencies are licensed by Realm Inc under the following license:
+
++ Realm
+
+TABLE OF CONTENTS
+
+1. Apache License version 2.0
+2. Realm Components
+3. Export Compliance
+
+-------------------------------------------------------------------------------
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "{}"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright {yyyy} {name of copyright owner}
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+
+REALM COMPONENTS
+
+This software contains components with separate copyright and license terms.
+Your use of these components is subject to the terms and conditions of the
+following licenses.
+
+For the Realm Core component
+
+  Realm Core Binary License
+
+  Copyright (c) 2011-2014 Realm Inc All rights reserved
+
+  Redistribution and use in binary form, with or without modification, is
+  permitted provided that the following conditions are met:
+
+  1. You agree not to attempt to decompile, disassemble, reverse engineer or
+  otherwise discover the source code from which the binary code was derived.
+  You may, however, access and obtain a separate license for most of the
+  source code from which this Software was created, at
+  http://realm.io/pricing/.
+
+  2. Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+  3. Neither the name of the copyright holder nor the names of its
+  contributors may be used to endorse or promote products derived from this
+  software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  POSSIBILITY OF SUCH DAMAGE.
+
+EXPORT COMPLIANCE
+
+You understand that the Software may contain cryptographic functions that may be
+subject to export restrictions, and you represent and warrant that you are not
+located in a country that is subject to United States export restriction or embargo,
+including Cuba, Iran, North Korea, Sudan, Syria or the Crimea region, and that you
+are not on the Department of Commerce list of Denied Persons, Unverified Parties,
+or affiliated with a Restricted Entity.
+
+You agree to comply with all export, re-export and import restrictions and
+regulations of the Department of Commerce or other agency or authority of the
+United States or other applicable countries. You also agree not to transfer, or
+authorize the transfer of, directly or indirectly, the Software to any prohibited
+country, including Cuba, Iran, North Korea, Sudan, Syria or the Crimea region,
+or to any person or organization on or affiliated with the Department of
+Commerce lists of Denied Persons, Unverified Parties or Restricted Entities, or
+otherwise in violation of any such restrictions or regulations.
