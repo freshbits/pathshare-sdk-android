@@ -1,7 +1,11 @@
-# Pathshare SDK
+# Pathshare SDK for Android
+
+![Platform](https://img.shields.io/badge/platform-android-green.svg?style=flat)
+![Language](https://img.shields.io/badge/language-java-brightgreen.svg?style=flat)
 
 **Pathshare** is a realtime location sharing platform. For more information please visit the [Pathshare Developer Page](https://pathsha.re/developers).
 
+- [Requirements](#requirements)
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
   - [Initialize Pathshare](#init-pathshare)
@@ -11,9 +15,13 @@
   - [Leave Session](#leave-session)
   - [Find Session](#find-session)
 
+## Requirements
+
+`PathshareSDK` for Android supports Android 5.x and 6.x.
+
 ## Installation
 
-The installation of the **Pathshare SDK** is simple. Just copy the `repo` folder you received upon registration into the root of your project.
+The installation of the `PathshareSDK` is simple. Just copy the `repo` folder you received upon registration into the root of your project.
 
 Next, reference the `repo` folder in your application `build.gradle` file:
 
@@ -32,7 +40,7 @@ dependencies {
 
 ### Initialization
 
-In order to initialize the Pathshare SDK, create a file named `pathshare.xml` inside the `res/value` folder and add your account token:
+In order to initialize the `PathshareSDK`, create a file named `pathshare.xml` inside the `res/value` folder and add your account token:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -89,9 +97,10 @@ A session needs an expiration date and a name. Optionally, you can specify a tra
 Tracking Mode      | Description
 -------------------|------------------------------------------------------------
 `SMART`            | Adapts intelligently to the environment and usage of the device. Includes awareness of battery level, travel speed and motion activity.
-`ECO`              | Static mode providing constant tracking data with very low accuracy and great distance between single locations (several kilometers) and ensuring maximum battery life.
-`APPROXIMATE`      | Static mode providing constant tracking data with low accuracy and middle distance between single locations (several hundred meters). Useful when a low battery drain is a important criteria.
-`ACCURATE`         | Static mode providing constant tracking with the highest accuracy possible and small distances between locations (few meters). Useful for scenarios where a high accuracy is an essential requirement.
+`ECO`              | Static mode providing constant tracking data with very low accuracy (several kilometers) and great distance between single locations and ensuring maximum battery life.
+`APPROXIMATE`      | Static mode providing constant tracking data with low accuracy (several hundred meters) and middle distance between single locations. Useful when a low battery drain is a important criteria.
+`ACCURATE`         | Static mode providing constant tracking with the highest accuracy possible (few meters) and small distances between locations. Useful for scenarios where a high accuracy is an essential requirement.
+
 
 Make sure to save the session after building:
 
@@ -100,6 +109,7 @@ session.save(new ResponseListener() { ... });
 
 session.getIdentifier() // => 3fd919fe824d8e7b78e2c11c1570a6f168d2c...
 session.isExpired() // => false
+session.getURL() // => https://pathsha.re/6d39d5
 ```
 
 #### Expiration
@@ -160,5 +170,15 @@ session.leaveUser(new ResponseListener() { ... });
 To find an existing session, use the `findSession()` method with the corresponding session identifier:
 
 ```java
-Session session = Pathshare.findSession(identifier)
+Pathshare.client().findSession(identifier, new SessionResponseListener() {
+    @Override
+    public void onSuccess(Session session) {
+        session.setSessionExpirationListener(
+            new SessionExpirationListener() { ... }
+        );
+    }
+
+    @Override
+    public void onError() { ... }
+}
 ```
