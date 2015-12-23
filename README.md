@@ -21,7 +21,7 @@
 
 ## Installation
 
-The installation of the `PathshareSDK` is simple. Just copy the `repo` folder you received upon registration into the root of your project.
+The installation of the `PathshareSDK` is simple. Just unzip the `pathshare-sdk-android.zip` file and copy the `repo` folder into the root of your project.
 
 Next, reference the `repo` folder in your application `build.gradle` file:
 
