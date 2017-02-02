@@ -3,7 +3,7 @@
 ![Platform](https://img.shields.io/badge/platform-android-green.svg?style=flat)
 ![Language](https://img.shields.io/badge/language-java-brightgreen.svg?style=flat)
 
-**Pathshare** is a realtime location sharing platform. For more information please visit the [Pathshare Developer Page](https://pathsha.re/developers).
+**Pathshare** is a realtime location sharing platform. For more information please visit the [Pathshare Developer Page](https://pathsha.re/professional/developers).
 
 - [Requirements](#requirements)
 - [Installation](#installation)
@@ -17,7 +17,7 @@
 
 ## Requirements
 
-`PathshareSDK` for Android supports Android 5.x and 6.x.
+`PathshareSDK` for Android supports Android 5.x, 6.x. and 7.x.
 
 ## Installation
 
