@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Example</string>
+    <string name="permission.access_fine_location.rationale">Please accept access to your location in order to show your location.</string>
+    <string name="permission.access_fine_location.denied">Location access denied.</string>
 </resources>
