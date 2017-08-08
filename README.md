@@ -21,7 +21,7 @@
 
 ## Installation
 
-The installation of the `PathshareSDK` is simple. Just unzip the `pathshare-sdk-android.zip` file and copy the `repo` folder into the root of your project.
+The installation of the `PathshareSDK` is simple. Download the latest `pathshare-sdk-android-[version].zip` from [Releases](https://github.com/freshbits/pathshare-sdk-android/releases) unzip and copy the `repo` folder into the root of your project.
 
 Next, reference the `repo` folder in your application `build.gradle` file:
 
@@ -32,7 +32,7 @@ repositories {
 
 dependencies {
     ...
-    compile 'ch.freshbits.pathshare.sdk:pathshare-sdk:1.0.0'
+    compile 'ch.freshbits.pathshare.sdk:pathshare-sdk:1.0.1'
 }
 ```
 
