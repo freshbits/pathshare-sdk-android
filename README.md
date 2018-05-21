@@ -17,11 +17,11 @@
 
 ## Requirements
 
-`PathshareSDK` for Android supports Android 5.x, 6.x. and 7.x.
+`PathshareSDK` for Android supports Android 5.x, 6.x, 7.x and 8.x.
 
 ## Installation
 
-The installation of the `PathshareSDK` is simple. Download the latest `pathshare-sdk-android-[version].zip` from [Releases](https://github.com/freshbits/pathshare-sdk-android/releases) unzip and copy the `repo` folder into the root of your project.
+The installation of the `PathshareSDK` is simple. Download the latest `pathshare-sdk-android-[version].zip` from [Releases](https://github.com/freshbits/pathshare-sdk-android/releases), unzip and copy the `repo` folder into the root of your project.
 
 Next, reference the `repo` folder in your application `build.gradle` file:
 
