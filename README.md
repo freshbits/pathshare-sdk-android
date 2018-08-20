@@ -12,6 +12,7 @@
   - [Save Username](#save-username)
   - [Create Session](#create-session)
   - [Join Session](#join-session)
+  - [Invite Customer](#invite-customer)
   - [Leave Session](#leave-session)
   - [Find Session](#find-session)
 
