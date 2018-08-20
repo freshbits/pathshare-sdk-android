@@ -26,6 +26,12 @@
     <Button
         android:layout_width="140dp"
         android:layout_height="wrap_content"
+        android:text="Invite Customer"
+        android:id="@+id/invite_customer" />
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
         android:text="Leave Session"
         android:id="@+id/leave_session" />
 

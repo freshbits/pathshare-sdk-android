@@ -12,9 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.net.URL;
 import java.util.Date;
 
 import ch.freshbits.pathshare.sdk.Pathshare;
+import ch.freshbits.pathshare.sdk.helper.InvitationResponseListener;
 import ch.freshbits.pathshare.sdk.helper.PermissionRequester;
 import ch.freshbits.pathshare.sdk.helper.ResponseListener;
 import ch.freshbits.pathshare.sdk.helper.SessionExpirationListener;
@@ -22,6 +24,7 @@ import ch.freshbits.pathshare.sdk.helper.SessionResponseListener;
 import ch.freshbits.pathshare.sdk.location.TrackingMode;
 import ch.freshbits.pathshare.sdk.model.Destination;
 import ch.freshbits.pathshare.sdk.model.Session;
+import ch.freshbits.pathshare.sdk.model.UserType;
 
 public class MainActivity extends Activity {
     private static final int TAG_PERMISSIONS_REQUEST_LOCATION_ACCESS = 1;
@@ -31,6 +34,7 @@ public class MainActivity extends Activity {
     Session mSession;
     Button mCreateButton;
     Button mJoinButton;
+    Button mInviteButton;
     Button mLeaveButton;
 
     @Override
@@ -40,20 +44,23 @@ public class MainActivity extends Activity {
 
         mCreateButton = (Button) findViewById(R.id.create_session);
         mJoinButton = (Button) findViewById(R.id.join_session);
+        mInviteButton = (Button) findViewById(R.id.invite_customer);
         mLeaveButton = (Button) findViewById(R.id.leave_session);
 
         initializeCreateButton();
         initializeJoinButton();
+        initializeInviteButton();
         initializeLeaveButton();
 
         findSession();
     }
 
     private void initializeCreateButton() {
+        getCreateButton().setEnabled(true);
         getCreateButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pathshare.client().saveUserName("SDK User 1", new ResponseListener() {
+                Pathshare.client().saveUser("SDK User", "+14159495533", UserType.DRIVER, new ResponseListener() {
                     @Override
                     public void onSuccess() {
                         Log.d("User", "Success");
@@ -75,6 +82,16 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 joinSession();
+            }
+        });
+    }
+
+    private void initializeInviteButton() {
+        getInviteButton().setEnabled(false);
+        getInviteButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inviteCustomer();
             }
         });
     }
@@ -143,6 +160,25 @@ public class MainActivity extends Activity {
         }
     }
 
+    private void inviteCustomer() {
+        if (getSession().isExpired()) { return; }
+
+        getSession().inviteUser("Customer", UserType.CLIENT, "customer@me.com", "+14159495533", new InvitationResponseListener() {
+            @Override
+            public void onSuccess(URL url) {
+                Log.d("Invite", "Success");
+                Log.d("URL", url.toString());
+                getInviteButton().setEnabled(false);
+                getLeaveButton().setEnabled(true);
+            }
+
+            @Override
+            public void onError() {
+                Log.e("Invite", "Error");
+            }
+        });
+    }
+
     private void requestLocationPermission() {
         PermissionRequester.requestPermission(this, TAG_PERMISSIONS_REQUEST_LOCATION_ACCESS, Manifest.permission.ACCESS_FINE_LOCATION, R.string.permission_access_fine_location_rationale);
     }
@@ -168,12 +204,12 @@ public class MainActivity extends Activity {
         try {
             if (getSession().isUserJoined()) { return; }
 
-            getSession().joinUser(new ResponseListener() {
+            getSession().join(new ResponseListener() {
                 @Override
                 public void onSuccess() {
                     Log.d("Join", "Success");
                     getJoinButton().setEnabled(false);
-                    getLeaveButton().setEnabled(true);
+                    getInviteButton().setEnabled(true);
                 }
 
                 @Override
@@ -190,7 +226,7 @@ public class MainActivity extends Activity {
         if (getSession().isExpired()) { return; }
 
         try {
-            getSession().leaveUser(new ResponseListener() {
+            getSession().leave(new ResponseListener() {
                 @Override
                 public void onSuccess() {
                     Log.d("Leave", "Success");
@@ -224,8 +260,10 @@ public class MainActivity extends Activity {
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                getInviteButton().setEnabled(false);
                 getLeaveButton().setEnabled(false);
                 getCreateButton().setEnabled(true);
+                deleteSessionIdentifier();
                 showToast("Session expired.");
             }
         });
@@ -247,6 +285,10 @@ public class MainActivity extends Activity {
         return mJoinButton;
     }
 
+    public Button getInviteButton() {
+        return mInviteButton;
+    }
+
     public Button getLeaveButton() {
         return mLeaveButton;
     }
@@ -261,6 +303,11 @@ public class MainActivity extends Activity {
             public void onSuccess(Session session) {
                 Log.d("Session", "Name: " + session.getName());
 
+                if (session.isExpired()) {
+                    deleteSessionIdentifier();
+                    return;
+                }
+
                 session.setSessionExpirationListener(new SessionExpirationListener() {
                     @Override
                     public void onExpiration() {
@@ -272,6 +319,7 @@ public class MainActivity extends Activity {
 
                 getCreateButton().setEnabled(false);
                 getJoinButton().setEnabled(true);
+                getInviteButton().setEnabled(false);
                 getLeaveButton().setEnabled(false);
             }
 
