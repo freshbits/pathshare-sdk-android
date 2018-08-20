@@ -173,14 +173,14 @@ To invite a customer to the session, call the `inviteUser()` method on the sessi
 ```java
 session.inviteUser("Customer name", UserType.CLIENT, "customer@email.com", "+14159495533", new InvitationResponseListener() {
     @Override
-        public void onSuccess(URL url) {
-            // ...
-            Log.d("URL", url.toString()); // => https://m.pathsha.re/12s83a
-        }
+    public void onSuccess(URL url) {
+        // ...
+        Log.d("URL", url.toString()); // => https://m.pathsha.re/12s83a
+    }
 
-        public void onError() {
-            // ...
-        }
+    public void onError() {
+        // ...
+    }
 });
 ```
 
