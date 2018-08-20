@@ -32,7 +32,7 @@ repositories {
 
 dependencies {
     ...
-    compile 'ch.freshbits.pathshare.sdk:pathshare-sdk:1.0.1'
+    compile 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.0.0'
 }
 ```
 
@@ -62,12 +62,12 @@ public class ExampleApplication extends Application {
 }
 ```
 
-### Save Username
+### Save User
 
 Before creating a session, you need to set a username:
 
 ```java
-Pathshare.client().saveUserName("Candice", new ResponseListener() {
+Pathshare.client().saveUser("Candice", "+14159495533", UserType.DRIVER, new ResponseListener() {
     @Override
     public void onSuccess() {
         // ...
@@ -79,6 +79,14 @@ Pathshare.client().saveUserName("Candice", new ResponseListener() {
     }
 });
 ```
+
+There are different types of users for specific industries:
+
+User Types                  | Description
+----------------------------|------------------------------------------------------------
+`TECHNICIAN`, `MOTORIST`    | For roadside assitance industry or similar
+`DRIVER`, `RECIPIENT`       | For delivery services or similar
+`INVESTIGATOR`, `CLIENT`    | For legal services industry or similar
 
 ### Create Session
 
@@ -150,19 +158,39 @@ session = new Session.Builder()
 To join the session you created, call the `joinUser()` method on the session object:
 
 ```java
-session.joinUser(new ResponseListener() { ... });
+session.join(new ResponseListener() { ... });
 
 session.isUserJoined() // => true
 ```
 
 This call will add your Pathshare user to the session and you will be able to see his location on a map in realtime in the Pathshare Professional web interface.
 
+### Invite a customer
+
+To invite a customer to the session, call the `inviteUser()` method on the session object:
+
+```java
+session.inviteUser("Customer name", UserType.CLIENT, "customer@email.com", "+14159495533", new InvitationResponseListener() {
+    @Override
+        public void onSuccess(URL url) {
+            // ...
+            Log.d("URL", url.toString()); // => https://m.pathsha.re/12s83a
+        }
+
+        public void onError() {
+            // ...
+        }
+});
+```
+
+This call will create a customer user and return an invitation URL that can be sent to the customer using your preffered channel. The customer will then see the driver's location in realtime as well as the ETA in a white-labeled view with your corporate identity.
+
 ### Leave Session
 
 In order to stop sending user location and remove the user from the session, call the `leaveUser()` method:
 
 ```java
-session.leaveUser(new ResponseListener() { ... });
+session.leave(new ResponseListener() { ... });
 ```
 
 ### Find Session
