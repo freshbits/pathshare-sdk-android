@@ -166,7 +166,7 @@ session.isUserJoined() // => true
 
 This call will add your Pathshare user to the session and you will be able to see his location on a map in realtime in the Pathshare Professional web interface.
 
-### Invite a customer
+### Invite customer
 
 To invite a customer to the session, call the `inviteUser()` method on the session object:
 
