@@ -5,7 +5,7 @@
 
 **Pathshare** is a realtime location sharing platform. For more information please visit the [Pathshare Developer Page](https://pathsha.re/professional/developers).
 
-<img src="/assets/ios-example-app.png" height="600">
+<img src="/assets/android-example-app.png" height="600">
 
 - [Requirements](#requirements)
 - [Installation](#installation)
