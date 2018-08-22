@@ -109,10 +109,10 @@ public class MainActivity extends Activity {
     private void createSession() {
         try {
             Destination destination = new Destination.Builder()
-                .setIdentifier("w9823")
-                .setLatitude(37.7951616)
-                .setLongitude(-122.4049222)
-                .build();
+                    .setIdentifier("w9823")
+                    .setLatitude(37.7875694)
+                    .setLongitude(-122.4112239)
+                    .build();
 
             Date expirationDate = new Date(System.currentTimeMillis() + 3600000);
 
@@ -137,6 +137,7 @@ public class MainActivity extends Activity {
 
                     getCreateButton().setEnabled(false);
                     getJoinButton().setEnabled(true);
+                    getLeaveButton().setEnabled(true);
                 }
 
                 @Override
@@ -163,7 +164,7 @@ public class MainActivity extends Activity {
     private void inviteCustomer() {
         if (getSession().isExpired()) { return; }
 
-        getSession().inviteUser("Customer", UserType.CLIENT, "customer@me.com", "+14159495533", new InvitationResponseListener() {
+        getSession().inviteUser("Customer", UserType.MOTORIST, "customer@me.com", "+14159495533", new InvitationResponseListener() {
             @Override
             public void onSuccess(URL url) {
                 Log.d("Invite", "Success");
@@ -208,8 +209,10 @@ public class MainActivity extends Activity {
                 @Override
                 public void onSuccess() {
                     Log.d("Join", "Success");
+                    getCreateButton().setEnabled(false);
                     getJoinButton().setEnabled(false);
                     getInviteButton().setEnabled(true);
+                    getLeaveButton().setEnabled(true);
                 }
 
                 @Override
@@ -230,8 +233,11 @@ public class MainActivity extends Activity {
                 @Override
                 public void onSuccess() {
                     Log.d("Leave", "Success");
-                    getLeaveButton().setEnabled(false);
                     getCreateButton().setEnabled(true);
+                    getJoinButton().setEnabled(false);
+                    getInviteButton().setEnabled(false);
+                    getLeaveButton().setEnabled(false);
+
 
                     deleteSessionIdentifier();
                 }
@@ -301,26 +307,30 @@ public class MainActivity extends Activity {
         Pathshare.client().findSession(identifier, new SessionResponseListener() {
             @Override
             public void onSuccess(Session session) {
-                Log.d("Session", "Name: " + session.getName());
-
-                if (session.isExpired()) {
+                if (session == null || session.isExpired()) {
                     deleteSessionIdentifier();
-                    return;
+
+                    getCreateButton().setEnabled(true);
+                    getJoinButton().setEnabled(false);
+                    getInviteButton().setEnabled(false);
+                    getLeaveButton().setEnabled(false);
+
+                } else {
+                    Log.d("Session", "Name: " + session.getName());
+                    session.setSessionExpirationListener(new SessionExpirationListener() {
+                        @Override
+                        public void onExpiration() {
+                            handleSessionExpiration();
+                        }
+                    });
+
+                    setSession(session);
+
+                    getCreateButton().setEnabled(false);
+                    getJoinButton().setEnabled(true);
+                    getInviteButton().setEnabled(false);
+                    getLeaveButton().setEnabled(true);
                 }
-
-                session.setSessionExpirationListener(new SessionExpirationListener() {
-                    @Override
-                    public void onExpiration() {
-                        handleSessionExpiration();
-                    }
-                });
-
-                setSession(session);
-
-                getCreateButton().setEnabled(false);
-                getJoinButton().setEnabled(true);
-                getInviteButton().setEnabled(false);
-                getLeaveButton().setEnabled(false);
             }
 
             @Override
