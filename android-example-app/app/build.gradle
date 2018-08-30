@@ -8,7 +8,7 @@ android {
         applicationId "ch.freshbits.pathshare.example"
         minSdkVersion 25
         targetSdkVersion 27
-        versionCode 2_0_0
+        versionCode 2_1_0
         versionName "2.1.0"
     }
 
