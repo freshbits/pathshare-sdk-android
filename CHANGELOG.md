@@ -1,5 +1,18 @@
 # Change Log
 
+## 2.1.0 - 2018-08-30
+### Changed
+- Moved tracking mode configuration to the Pathshare client to use the same config across all sessions
+- Add support for multi-session
+- Minor improvements
+
+## 2.0.0 - 2018-08-20
+### Changed
+- Updated to use our enhanced API
+- Added possibility to invite customer and get a inique inivation URL back
+- Minor improvements
+
+
 ## 1.0.1 - 2017-08-08
 ### Changed
 - Added support for Android 7.x.

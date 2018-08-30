@@ -35,7 +35,7 @@ repositories {
 
 dependencies {
     ...
-    compile 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.0.0'
+    compile 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.1.0'
 }
 ```
 
@@ -60,17 +60,26 @@ public class ExampleApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        Pathshare.initialize(this, getString(R.string.pathshare_account_token));
+        Pathshare.initialize(this, getString(R.string.pathshare_account_token), TrackingMode.SMART);
     }
 }
 ```
+
+Optionally, you can specify a tracking mode to configure the behavior of the location tracker. The following tracking modes are available:
+
+Tracking Mode      | Description
+-------------------|------------------------------------------------------------
+`SMART`            | Adapts intelligently to the environment and usage of the device. Includes awareness of battery level, travel speed and motion activity.
+`ECO`              | Static mode providing constant tracking data with very low accuracy (several kilometers) and great distance between single locations and ensuring maximum battery life.
+`APPROXIMATE`      | Static mode providing constant tracking data with low accuracy (several hundred meters) and middle distance between single locations. Useful when a low battery drain is a important criteria.
+`ACCURATE`         | Static mode providing constant tracking with the highest accuracy possible (few meters) and small distances between locations. Useful for scenarios where a high accuracy is an essential requirement.
 
 ### Save User
 
 Before creating a session, you need to set a username:
 
 ```java
-Pathshare.client().saveUser("Candice", "+14159495533", UserType.DRIVER, new ResponseListener() {
+Pathshare.client().saveUser("Candice", "+12345678901", UserType.DRIVER, new ResponseListener() {
     @Override
     public void onSuccess() {
         // ...
@@ -99,18 +108,10 @@ To create a session, use the session builder:
 session = new Session.Builder()
     .setExpirationDate(expirationDate)
     .setName("Shopping")
-    .setTrackingMode(TrackingMode.SMART) // optional
     .build();
 ```
 
-A session needs an expiration date and a name. Optionally, you can specify a tracking mode to configure the behavior of the location tracker. The following tracking modes are available:
-
-Tracking Mode      | Description
--------------------|------------------------------------------------------------
-`SMART`            | Adapts intelligently to the environment and usage of the device. Includes awareness of battery level, travel speed and motion activity.
-`ECO`              | Static mode providing constant tracking data with very low accuracy (several kilometers) and great distance between single locations and ensuring maximum battery life.
-`APPROXIMATE`      | Static mode providing constant tracking data with low accuracy (several hundred meters) and middle distance between single locations. Useful when a low battery drain is a important criteria.
-`ACCURATE`         | Static mode providing constant tracking with the highest accuracy possible (few meters) and small distances between locations. Useful for scenarios where a high accuracy is an essential requirement.
+A session needs an expiration date and a name. You can create multiple sessions at the same time, the SDK will manage them for you.
 
 
 Make sure to save the session after building:
@@ -173,7 +174,7 @@ This call will add your Pathshare user to the session and you will be able to se
 To invite a customer to the session, call the `inviteUser()` method on the session object:
 
 ```java
-session.inviteUser("Customer name", UserType.CLIENT, "customer@email.com", "+14159495533", new InvitationResponseListener() {
+session.inviteUser("Customer name", UserType.CLIENT, "customer@email.com", "+12345678901", new InvitationResponseListener() {
     @Override
     public void onSuccess(URL url) {
         // ...
