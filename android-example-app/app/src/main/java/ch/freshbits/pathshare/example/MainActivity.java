@@ -120,7 +120,6 @@ public class MainActivity extends Activity {
                     .setDestination(destination)
                     .setExpirationDate(expirationDate)
                     .setName("simple session")
-                    .setTrackingMode(TrackingMode.SMART)
                     .setSessionExpirationListener(new SessionExpirationListener() {
                         @Override
                         public void onExpiration() {
