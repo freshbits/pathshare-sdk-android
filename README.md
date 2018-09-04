@@ -1,7 +1,10 @@
 # Pathshare SDK for Android
 
+
+![GitHub release](https://img.shields.io/github/release/freshbits/pathshare-sdk-android.svg?style=flat)
 ![Platform](https://img.shields.io/badge/platform-android-green.svg?style=flat)
 ![Language](https://img.shields.io/badge/language-java-brightgreen.svg?style=flat)
+![Language](https://img.shields.io/badge/language-kotlin-brightgreen.svg?style=flat)
 
 **Pathshare** is a realtime location sharing platform. For more information please visit the [Pathshare Developer Page](https://pathsha.re/professional/developers).
 
@@ -26,11 +29,11 @@
 
 The installation of the `PathshareSDK` is simple. Download the latest `pathshare-sdk-android-[version].zip` from [Releases](https://github.com/freshbits/pathshare-sdk-android/releases), unzip and copy the `repo` folder into the root of your project.
 
-Next, reference the `repo` folder in your application `build.gradle` file:
+Next, reference the `PathareSDK` folder in your application `build.gradle` file:
 
 ```gradle
 repositories {
-    maven { url "file://$projectDir/../repo" }
+    maven { url "file://$projectDir/../PathshareSDK" }
 }
 
 dependencies {
@@ -54,6 +57,7 @@ In order to initialize the `PathshareSDK`, create a file named `pathshare.xml` i
 
 Next, add the following to the `onCreate` method of your `Application` class:
 
+###### Java
 ```java
 public class ExampleApplication extends Application {
     @Override
@@ -61,6 +65,17 @@ public class ExampleApplication extends Application {
         super.onCreate();
 
         Pathshare.initialize(this, getString(R.string.pathshare_account_token), TrackingMode.SMART);
+    }
+}
+```
+###### Kotlin
+```kotlin
+class ExampleApplication: Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+
+        Pathshare.initialize(this, getString(R.string.pathshare_account_token), TrackingMode.SMART)
     }
 }
 ```
@@ -78,6 +93,7 @@ Tracking Mode      | Description
 
 Before creating a session, you need to set a username:
 
+###### Java
 ```java
 Pathshare.client().saveUser("Candice", "+12345678901", UserType.DRIVER, new ResponseListener() {
     @Override
@@ -92,6 +108,19 @@ Pathshare.client().saveUser("Candice", "+12345678901", UserType.DRIVER, new Resp
 });
 ```
 
+###### Kotlin
+```kotlin
+Pathshare.client().saveUser("SDK User Android", "+12345678901", UserType.DRIVER, object: ResponseListener {
+    override fun onSuccess() {
+        // ...
+    }
+
+    override fun onError() {
+        // ...
+    }
+})
+```
+
 There are different types of users for specific industries:
 
 User Types                  | Description
@@ -104,6 +133,7 @@ User Types                  | Description
 
 To create a session, use the session builder:
 
+###### Java
 ```java
 session = new Session.Builder()
     .setExpirationDate(expirationDate)
@@ -111,11 +141,20 @@ session = new Session.Builder()
     .build();
 ```
 
+###### Kotlin
+```kotlin
+session = Session.Builder()
+    .setExpirationDate(expirationDate)
+    .setName("Shopping")
+    .build()
+```
+
 A session needs an expiration date and a name. You can create multiple sessions at the same time, the SDK will manage them for you.
 
 
 Make sure to save the session after building:
 
+###### Java
 ```java
 session.save(new ResponseListener() { ... });
 
@@ -124,10 +163,20 @@ session.isExpired() // => false
 session.getURL() // => https://pathsha.re/6d39d5
 ```
 
+###### Kotlin
+```kotlin
+session.save(object: ResponseListener { ... })
+
+session.identifier // => 3fd919fe824d8e7b78e2c11c1570a6f168d2c...
+session.isExpired // => false
+session.url // => https://pathsha.re/6d39d5
+```
+
 #### Expiration
 
 In order to react to the expiration of the session, add an `ExpirationListener`:
 
+###### Java
 ```java
 session = new Session.Builder()
     // ...
@@ -140,10 +189,19 @@ session = new Session.Builder()
     .build();
 ```
 
+###### Kotlin
+```kotlin
+session = Session.Builder()
+    // ...
+    .setSessionExpirationListener { // ... }
+    .build()
+```
+
 #### Destination
 
 Optionally, you can add a destination to the session. Sessions with destination will show the estimated time of arrival (ETA) for each user. The destination identifier is used to group sessions by destination.
 
+###### Java
 ```java
 Destination destination = new Destination.Builder()
     .setIdentifier("W2342")
@@ -157,14 +215,36 @@ session = new Session.Builder()
     .build();
 ```
 
+###### Kotlin
+```kotlin
+val destination = Destination.Builder()
+    .setIdentifier("W2342")
+    .setLatitude(47.378178)
+    .setLongitude(8.539256)
+    .build()
+
+session = Session.Builder()
+    // ...
+    .setDestination(destination)
+    .build()
+```
+
 ### Join Session
 
 To join the session you created, call the `joinUser()` method on the session object:
 
+###### Java
 ```java
 session.join(new ResponseListener() { ... });
 
 session.isUserJoined() // => true
+```
+
+###### Kotlin
+```kotlin
+session.join(object: ResponseListener { ... })
+
+session.isUserJoined // => true
 ```
 
 This call will add your Pathshare user to the session and you will be able to see his location on a map in realtime in the Pathshare Professional web interface.
@@ -173,8 +253,9 @@ This call will add your Pathshare user to the session and you will be able to se
 
 To invite a customer to the session, call the `inviteUser()` method on the session object:
 
+###### Java
 ```java
-session.inviteUser("Customer name", UserType.CLIENT, "customer@email.com", "+12345678901", new InvitationResponseListener() {
+session.inviteUser("Customer", UserType.CLIENT, "customer@email.com", "+12345678901", new InvitationResponseListener() {
     @Override
     public void onSuccess(URL url) {
         // ...
@@ -187,6 +268,20 @@ session.inviteUser("Customer name", UserType.CLIENT, "customer@email.com", "+123
 });
 ```
 
+###### Kotlin
+```kotlin
+session.inviteUser("Customer", UserType.CLIENT, "customer@me.com", "+12345678901", object: InvitationResponseListener {
+    override fun onSuccess(url: URL?) {
+        // ...
+        Log.d("URL", url.toString()) // => https://m.pathsha.re/12s83a
+    }
+
+    override fun onError() {
+        // ...
+    }
+})
+```
+
 This call will create a customer user and return an invitation URL that can be sent to the customer using your preffered channel. The customer will then see the driver's location in realtime as well as the ETA in a white-labeled view with your corporate identity.
 
 The customer will be able to enjoy the full realtime experience in the web browser of their smartphone:
@@ -197,14 +292,21 @@ The customer will be able to enjoy the full realtime experience in the web brows
 
 In order to stop sending user location and remove the user from the session, call the `leaveUser()` method:
 
+###### Java
 ```java
 session.leave(new ResponseListener() { ... });
+```
+
+###### Kotlin
+```kotlin
+session.leave(object: ResponseListener { ... })
 ```
 
 ### Find Session
 
 To find an existing session, use the `findSession()` method with the corresponding session identifier:
 
+###### Java
 ```java
 Pathshare.client().findSession(identifier, new SessionResponseListener() {
     @Override
@@ -217,4 +319,15 @@ Pathshare.client().findSession(identifier, new SessionResponseListener() {
     @Override
     public void onError() { ... }
 }
+```
+
+###### Kotlin
+```kotlin
+Pathshare.client().findSession(identifier, object: SessionResponseListener {
+    override fun onSuccess(session: Session?) {
+        session.sessionExpirationListener = SessionExpirationListener { ... }
+    }
+
+    override fun onError() { ... }
+})
 ```
