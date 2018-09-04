@@ -32,7 +32,7 @@ android {
 }
 
 repositories {
-    maven { url "file://$projectDir/../repo" }
+    maven { url "file://$projectDir/../PathshareSDK" }
 }
 
 dependencies {
