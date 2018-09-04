@@ -59,7 +59,7 @@ public class MainActivity extends Activity {
         getCreateButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pathshare.client().saveUser("SDK User", "+14159495533", UserType.DRIVER, new ResponseListener() {
+                Pathshare.client().saveUser("SDK User", "+12345678901", UserType.DRIVER, new ResponseListener() {
                     @Override
                     public void onSuccess() {
                         Log.d("User", "Success");
@@ -162,7 +162,7 @@ public class MainActivity extends Activity {
     private void inviteCustomer() {
         if (getSession().isExpired()) { return; }
 
-        getSession().inviteUser("Customer", UserType.MOTORIST, "customer@me.com", "+14159495533", new InvitationResponseListener() {
+        getSession().inviteUser("Customer", UserType.MOTORIST, "customer@me.com", "+12345678901", new InvitationResponseListener() {
             @Override
             public void onSuccess(URL url) {
                 Log.d("Invite", "Success");

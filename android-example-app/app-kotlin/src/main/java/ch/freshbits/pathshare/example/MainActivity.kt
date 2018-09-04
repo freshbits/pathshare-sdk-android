@@ -151,7 +151,7 @@ class MainActivity : AppCompatActivity() {
     private fun inviteCustomer() {
         if (session.isExpired) return
 
-        session.inviteUser("Customer", UserType.MOTORIST, "customer@me.com", "+14159495533", object: InvitationResponseListener {
+        session.inviteUser("Customer", UserType.MOTORIST, "customer@me.com", "+12345678901", object: InvitationResponseListener {
             override fun onSuccess(url: URL?) {
                 Log.d("Invite", "Success")
                 Log.d("URL", url.toString())
