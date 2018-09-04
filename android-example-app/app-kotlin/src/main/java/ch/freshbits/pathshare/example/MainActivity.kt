@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG_PERMISSIONS_REQUEST_LOCATION_ACCESS = 1
-        private const val SESSION_PREFERENCES= "session"
+        private const val SESSION_PREFERENCES = "session"
         private const val SESSION_ID_KEY = "session_id"
     }
 
