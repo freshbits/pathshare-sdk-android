@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="pathshare_account_token">22a7fcd990ec8902542cff4ff3cf294a9137bc24c18f61019301825d2c42cc1e</string>
+    <string name="pathshare_account_token">Place your API token here.</string>
 </resources>
