@@ -21,7 +21,6 @@ import ch.freshbits.pathshare.sdk.helper.PermissionRequester;
 import ch.freshbits.pathshare.sdk.helper.ResponseListener;
 import ch.freshbits.pathshare.sdk.helper.SessionExpirationListener;
 import ch.freshbits.pathshare.sdk.helper.SessionResponseListener;
-import ch.freshbits.pathshare.sdk.location.TrackingMode;
 import ch.freshbits.pathshare.sdk.model.Destination;
 import ch.freshbits.pathshare.sdk.model.Session;
 import ch.freshbits.pathshare.sdk.model.UserType;
@@ -42,10 +41,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mCreateButton = (Button) findViewById(R.id.create_session);
-        mJoinButton = (Button) findViewById(R.id.join_session);
-        mInviteButton = (Button) findViewById(R.id.invite_customer);
-        mLeaveButton = (Button) findViewById(R.id.leave_session);
+        mCreateButton = findViewById(R.id.create_session);
+        mJoinButton = findViewById(R.id.join_session);
+        mInviteButton = findViewById(R.id.invite_customer);
+        mLeaveButton = findViewById(R.id.leave_session);
 
         initializeCreateButton();
         initializeJoinButton();
@@ -258,7 +257,7 @@ public class MainActivity extends Activity {
     }
 
     private void deleteSessionIdentifier() {
-        getPreferences().edit().clear().commit();
+        getPreferences().edit().clear().apply();
     }
 
     private void handleSessionExpiration() {
