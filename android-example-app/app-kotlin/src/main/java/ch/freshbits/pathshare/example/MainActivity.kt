@@ -35,11 +35,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        createButton = findViewById<View>(R.id.create_session) as Button
-        joinButton = findViewById<View>(R.id.join_session) as Button
-        inviteButton = findViewById<View>(R.id.invite_customer) as Button
-        leaveButton = findViewById<View>(R.id.leave_session) as Button
-
         initializeCreateButton()
         initializeJoinButton()
         initializeInviteButton()
@@ -49,6 +44,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initializeCreateButton() {
+        createButton = findViewById<View>(R.id.create_session) as Button
         createButton.isEnabled = true
         createButton.setOnClickListener {
             Pathshare.client().saveUser("SDK User Android", "+12345678901", UserType.DRIVER, object: ResponseListener {
@@ -65,16 +61,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initializeJoinButton() {
+        joinButton = findViewById<View>(R.id.join_session) as Button
         joinButton.isEnabled = false
         joinButton.setOnClickListener { joinSession() }
     }
 
     private fun initializeInviteButton() {
+        inviteButton = findViewById<View>(R.id.invite_customer) as Button
         inviteButton.isEnabled = false
         inviteButton.setOnClickListener { inviteCustomer() }
     }
 
     private fun initializeLeaveButton() {
+        leaveButton = findViewById<View>(R.id.leave_session) as Button
         leaveButton.isEnabled = false
         leaveButton.setOnClickListener { leaveSession() }
     }
@@ -225,7 +224,6 @@ class MainActivity : AppCompatActivity() {
             deleteSessionIdentifier()
             showToast("Session expired")
         }
-
     }
 
     private fun showToast(message: String) {

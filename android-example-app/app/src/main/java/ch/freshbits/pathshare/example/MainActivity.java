@@ -41,11 +41,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mCreateButton = findViewById(R.id.create_session);
-        mJoinButton = findViewById(R.id.join_session);
-        mInviteButton = findViewById(R.id.invite_customer);
-        mLeaveButton = findViewById(R.id.leave_session);
-
         initializeCreateButton();
         initializeJoinButton();
         initializeInviteButton();
@@ -55,6 +50,7 @@ public class MainActivity extends Activity {
     }
 
     private void initializeCreateButton() {
+        setCreateButton((Button) findViewById(R.id.create_session));
         getCreateButton().setEnabled(true);
         getCreateButton().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +72,7 @@ public class MainActivity extends Activity {
     }
 
     private void initializeJoinButton() {
+        setJoinButton((Button) findViewById(R.id.join_session));
         getJoinButton().setEnabled(false);
         getJoinButton().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +83,7 @@ public class MainActivity extends Activity {
     }
 
     private void initializeInviteButton() {
+        setInviteButton((Button) findViewById(R.id.invite_customer));
         getInviteButton().setEnabled(false);
         getInviteButton().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +94,7 @@ public class MainActivity extends Activity {
     }
 
     private void initializeLeaveButton() {
+        setLeaveButton((Button) findViewById(R.id.leave_session));
         getLeaveButton().setEnabled(false);
         getLeaveButton().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -279,6 +278,22 @@ public class MainActivity extends Activity {
 
     public Session getSession() {
         return mSession;
+    }
+
+    public void setCreateButton(Button createButton) {
+        this.mCreateButton = createButton;
+    }
+
+    public void setJoinButton(Button joinButton) {
+        this.mJoinButton = joinButton;
+    }
+
+    public void setInviteButton(Button inviteButton) {
+        this.mInviteButton = inviteButton;
+    }
+
+    public void setLeaveButton(Button leaveButton) {
+        this.mLeaveButton = leaveButton;
     }
 
     public Button getCreateButton() {
