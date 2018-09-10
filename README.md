@@ -91,11 +91,11 @@ Tracking Mode      | Description
 
 ### Save User
 
-Before creating a session, you need to set a username:
+Before creating a session, you need to save a user:
 
 ###### Java
 ```java
-Pathshare.client().saveUser("Candice", "+12345678901", UserType.DRIVER, new ResponseListener() {
+Pathshare.client().saveUser("Candice", "me@email.com", "+12345678901", UserType.DRIVER, new ResponseListener() {
     @Override
     public void onSuccess() {
         // ...
@@ -110,7 +110,7 @@ Pathshare.client().saveUser("Candice", "+12345678901", UserType.DRIVER, new Resp
 
 ###### Kotlin
 ```kotlin
-Pathshare.client().saveUser("SDK User Android", "+12345678901", UserType.DRIVER, object: ResponseListener {
+Pathshare.client().saveUser("SDK User Android", "me@email.com", "+12345678901", UserType.DRIVER, object: ResponseListener {
     override fun onSuccess() {
         // ...
     }
@@ -120,6 +120,7 @@ Pathshare.client().saveUser("SDK User Android", "+12345678901", UserType.DRIVER,
     }
 })
 ```
+The email address can be `null`.
 
 There are different types of users for specific industries:
 
