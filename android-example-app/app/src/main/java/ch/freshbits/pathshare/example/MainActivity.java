@@ -55,7 +55,7 @@ public class MainActivity extends Activity {
         getCreateButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pathshare.client().saveUser("SDK User", "+12345678901", UserType.DRIVER, new ResponseListener() {
+                Pathshare.client().saveUser("SDK User", "me@email.com", "+12345678901", UserType.DRIVER, new ResponseListener() {
                     @Override
                     public void onSuccess() {
                         Log.d("User", "Success");
