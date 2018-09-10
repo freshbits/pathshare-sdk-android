@@ -8,8 +8,8 @@ android {
         applicationId "ch.freshbits.pathshare.example"
         minSdkVersion 25
         targetSdkVersion 27
-        versionCode 2_1_0
-        versionName "2.1.0"
+        versionCode 2_2_0
+        versionName "2.2.0"
     }
 
     lintOptions {
@@ -40,5 +40,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //noinspection GradleCompatible
     compile 'com.android.support:appcompat-v7:27.1.1'
-    compile 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.1.0'
+    compile 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.2.0'
 }
