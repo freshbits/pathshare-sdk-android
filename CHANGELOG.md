@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.2.0 - 2018-09-10
+### Changed
+- Added email address to user
+- Added support for null values for email address
+- Minor improvements
+
 ## 2.1.0 - 2018-08-30
 ### Changed
 - Moved tracking mode configuration to the Pathshare client to use the same config across all sessions
