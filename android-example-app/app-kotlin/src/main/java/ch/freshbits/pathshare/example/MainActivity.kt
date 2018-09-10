@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         createButton = findViewById<View>(R.id.create_session) as Button
         createButton.isEnabled = true
         createButton.setOnClickListener {
-            Pathshare.client().saveUser("SDK User Android", "+12345678901", UserType.DRIVER, object: ResponseListener {
+            Pathshare.client().saveUser("SDK User Android", "me@email.com", "+12345678901", UserType.DRIVER, object: ResponseListener {
                 override fun onSuccess() {
                     Log.d("User", "Success")
                     createSession()
