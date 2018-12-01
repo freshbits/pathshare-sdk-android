@@ -23,7 +23,7 @@
 
 ## Requirements
 
-`PathshareSDK` for Android supports Android 5.x, 6.x, 7.x and 8.x.
+`PathshareSDK` for Android supports Android 5.x, 6.x, 7.x, 8.x and 9.x.
 
 ## Installation
 
@@ -95,7 +95,7 @@ Before creating a session, you need to save a user:
 
 ###### Java
 ```java
-Pathshare.client().saveUser("Candice", "me@email.com", "+12345678901", UserType.DRIVER, new ResponseListener() {
+Pathshare.client().saveUser("Candice", "me@email.com", "+12345678901", UserType.DRIVER, getResources().getDrawable(R.drawable.face, null), new ResponseListener() {
     @Override
     public void onSuccess() {
         // ...
@@ -110,7 +110,7 @@ Pathshare.client().saveUser("Candice", "me@email.com", "+12345678901", UserType.
 
 ###### Kotlin
 ```kotlin
-Pathshare.client().saveUser("SDK User Android", "me@email.com", "+12345678901", UserType.DRIVER, object: ResponseListener {
+Pathshare.client().saveUser("SDK User Android", "me@email.com", "+12345678901", UserType.DRIVER, resources.getDrawable(R.drawable.face, null), object: ResponseListener {
     override fun onSuccess() {
         // ...
     }
@@ -121,6 +121,8 @@ Pathshare.client().saveUser("SDK User Android", "me@email.com", "+12345678901", 
 })
 ```
 The email address can be `null`.
+
+Use the same method Pathshare.client().saveUser() to create or update the user.
 
 There are different types of users for specific industries:
 
