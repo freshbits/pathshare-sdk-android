@@ -122,7 +122,7 @@ Pathshare.client().saveUser("SDK User Android", "me@email.com", "+12345678901", 
 ```
 The email address can be `null`.
 
-Use the same method Pathshare.client().saveUser() to create or update the user.
+Use the same method `Pathshare.client().saveUser()` to create or update the user.
 
 There are different types of users for specific industries:
 
