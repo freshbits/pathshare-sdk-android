@@ -38,7 +38,7 @@ repositories {
 
 dependencies {
     ...
-    compile 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.1.0'
+    compile 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.3.0'
 }
 ```
 
