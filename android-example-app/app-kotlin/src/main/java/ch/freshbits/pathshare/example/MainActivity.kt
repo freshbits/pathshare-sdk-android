@@ -47,7 +47,13 @@ class MainActivity : AppCompatActivity() {
         createButton = findViewById<View>(R.id.create_session) as Button
         createButton.isEnabled = true
         createButton.setOnClickListener {
-            Pathshare.client().saveUser("SDK User Android", "me@email.com", "+12345678901", UserType.DRIVER, object: ResponseListener {
+            Pathshare.client().saveUser(
+                    "SDK User Android",
+                    "me@email.com",
+                    "+12345678901",
+                    UserType.TECHNICIAN,
+                    resources.getDrawable(R.drawable.face, null),
+                    object: ResponseListener {
                 override fun onSuccess() {
                     Log.d("User", "Success")
                     createSession()
@@ -150,7 +156,13 @@ class MainActivity : AppCompatActivity() {
     private fun inviteCustomer() {
         if (session.isExpired) return
 
-        session.inviteUser("Customer", UserType.MOTORIST, "customer@me.com", "+12345678901", object: InvitationResponseListener {
+        session.inviteUser(
+                "Customer",
+                UserType.MOTORIST,
+                "customer@me.com",
+                "+12345678901",
+                true,
+                object: InvitationResponseListener {
             override fun onSuccess(url: URL?) {
                 Log.d("Invite", "Success")
                 Log.d("URL", url.toString())

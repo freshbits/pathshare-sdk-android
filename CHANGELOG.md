@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.3.0 - 2018-12-01
+### Changed
+- Added image support to user
+- Added support to define if customer can update session destination
+- Minor improvements
+
 ## 2.2.0 - 2018-09-10
 ### Changed
 - Added email address to user
