@@ -50,58 +50,44 @@ public class MainActivity extends Activity {
     }
 
     private void initializeCreateButton() {
-        setCreateButton((Button) findViewById(R.id.create_session));
+        setCreateButton(findViewById(R.id.create_session));
         getCreateButton().setEnabled(true);
-        getCreateButton().setOnClickListener(new View.OnClickListener() {
+        getCreateButton().setOnClickListener(view -> Pathshare.client().saveUser(
+                "SDK User",
+                "me@email.com",
+                "+12345678901",
+                UserType.TECHNICIAN,
+                getResources().getDrawable(R.drawable.face, null),
+                new ResponseListener() {
             @Override
-            public void onClick(View view) {
-                Pathshare.client().saveUser("SDK User", "me@email.com", "+12345678901", UserType.DRIVER, new ResponseListener() {
-                    @Override
-                    public void onSuccess() {
-                        Log.d("User", "Success");
-                        createSession();
-                    }
-
-                    @Override
-                    public void onError() {
-                        Log.e("User", "Error");
-                    }
-                });
+            public void onSuccess() {
+                Log.d("User", "Success");
+                createSession();
             }
-        });
+
+            @Override
+            public void onError() {
+                Log.e("User", "Error");
+            }
+        }));
     }
 
     private void initializeJoinButton() {
-        setJoinButton((Button) findViewById(R.id.join_session));
+        setJoinButton(findViewById(R.id.join_session));
         getJoinButton().setEnabled(false);
-        getJoinButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                joinSession();
-            }
-        });
+        getJoinButton().setOnClickListener(view -> joinSession());
     }
 
     private void initializeInviteButton() {
-        setInviteButton((Button) findViewById(R.id.invite_customer));
+        setInviteButton(findViewById(R.id.invite_customer));
         getInviteButton().setEnabled(false);
-        getInviteButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                inviteCustomer();
-            }
-        });
+        getInviteButton().setOnClickListener(view -> inviteCustomer());
     }
 
     private void initializeLeaveButton() {
-        setLeaveButton((Button) findViewById(R.id.leave_session));
+        setLeaveButton(findViewById(R.id.leave_session));
         getLeaveButton().setEnabled(false);
-        getLeaveButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                leaveSession();
-            }
-        });
+        getLeaveButton().setOnClickListener(view -> leaveSession());
     }
 
     private void createSession() {
@@ -118,12 +104,7 @@ public class MainActivity extends Activity {
                     .setDestination(destination)
                     .setExpirationDate(expirationDate)
                     .setName("simple session")
-                    .setSessionExpirationListener(new SessionExpirationListener() {
-                        @Override
-                        public void onExpiration() {
-                            handleSessionExpiration();
-                        }
-                    })
+                    .setSessionExpirationListener(() -> handleSessionExpiration())
                     .build();
 
             getSession().save(new ResponseListener() {
@@ -161,7 +142,13 @@ public class MainActivity extends Activity {
     private void inviteCustomer() {
         if (getSession().isExpired()) { return; }
 
-        getSession().inviteUser("Customer", UserType.MOTORIST, "customer@me.com", "+12345678901", new InvitationResponseListener() {
+        getSession().inviteUser(
+                "Customer",
+                UserType.MOTORIST,
+                "customer@me.com",
+                "+12345678901",
+                true,
+                new InvitationResponseListener() {
             @Override
             public void onSuccess(URL url) {
                 Log.d("Invite", "Success");
@@ -260,15 +247,12 @@ public class MainActivity extends Activity {
     }
 
     private void handleSessionExpiration() {
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                getInviteButton().setEnabled(false);
-                getLeaveButton().setEnabled(false);
-                getCreateButton().setEnabled(true);
-                deleteSessionIdentifier();
-                showToast("Session expired.");
-            }
+        this.runOnUiThread(() -> {
+            getInviteButton().setEnabled(false);
+            getLeaveButton().setEnabled(false);
+            getCreateButton().setEnabled(true);
+            deleteSessionIdentifier();
+            showToast("Session expired.");
         });
     }
 
@@ -330,12 +314,7 @@ public class MainActivity extends Activity {
 
                 } else {
                     Log.d("Session", "Name: " + session.getName());
-                    session.setSessionExpirationListener(new SessionExpirationListener() {
-                        @Override
-                        public void onExpiration() {
-                            handleSessionExpiration();
-                        }
-                    });
+                    session.setSessionExpirationListener(() -> handleSessionExpiration());
 
                     setSession(session);
 
