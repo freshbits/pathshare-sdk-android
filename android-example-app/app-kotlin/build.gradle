@@ -3,14 +3,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "ch.freshbits.pathshare.example"
         minSdkVersion 21
-        targetSdkVersion 27
         versionCode 2_3_0
         versionName "2.3.0"
+        targetSdkVersion 28
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
