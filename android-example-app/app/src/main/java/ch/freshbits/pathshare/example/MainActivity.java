@@ -6,11 +6,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import java.net.URL;
 import java.util.Date;
@@ -19,7 +19,6 @@ import ch.freshbits.pathshare.sdk.Pathshare;
 import ch.freshbits.pathshare.sdk.helper.InvitationResponseListener;
 import ch.freshbits.pathshare.sdk.helper.PermissionRequester;
 import ch.freshbits.pathshare.sdk.helper.ResponseListener;
-import ch.freshbits.pathshare.sdk.helper.SessionExpirationListener;
 import ch.freshbits.pathshare.sdk.helper.SessionResponseListener;
 import ch.freshbits.pathshare.sdk.model.Destination;
 import ch.freshbits.pathshare.sdk.model.Session;
@@ -174,13 +173,11 @@ public class MainActivity extends Activity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case TAG_PERMISSIONS_REQUEST_LOCATION_ACCESS: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    performJoinSession();
-                } else {
-                    Toast.makeText(this, R.string.permission_access_fine_location_denied, Toast.LENGTH_SHORT).show();
-                }
+        if (requestCode == TAG_PERMISSIONS_REQUEST_LOCATION_ACCESS) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                performJoinSession();
+            } else {
+                Toast.makeText(this, R.string.permission_access_fine_location_denied, Toast.LENGTH_SHORT).show();
             }
         }
     }
