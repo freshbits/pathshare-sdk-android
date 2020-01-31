@@ -8,8 +8,8 @@ android {
     defaultConfig {
         applicationId "ch.freshbits.pathshare.example"
         minSdkVersion 21
-        versionCode 2_3_0
         targetSdkVersion 28
+        versionCode 131
         versionName "2.3.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
