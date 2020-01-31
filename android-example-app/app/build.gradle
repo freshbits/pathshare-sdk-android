@@ -45,8 +45,7 @@ repositories {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
-    //noinspection GradleCompatible
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.3.0'
+    testImplementation 'junit:junit:4.13'
+    implementation 'androidx.appcompat:appcompat:1.2.0-alpha01'
+    implementation 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.3.1'
 }
