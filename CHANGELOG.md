@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.3.1 - 2020-01-31
+### Changed
+- Added manufacturer specific support
+- Minor improvements
+
 ## 2.3.0 - 2018-12-01
 ### Changed
 - Added image support to user

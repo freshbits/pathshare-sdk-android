@@ -23,7 +23,7 @@
 
 ## Requirements
 
-`PathshareSDK` for Android supports Android 5.x, 6.x, 7.x, 8.x and 9.x.
+`PathshareSDK` for Android supports Android 5.x, 6.x, 7.x, 8.x, 9.x and 10.x.
 
 ## Installation
 
@@ -38,7 +38,7 @@ repositories {
 
 dependencies {
     ...
-    compile 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.3.0'
+    compile 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.3.1'
 }
 ```
 
