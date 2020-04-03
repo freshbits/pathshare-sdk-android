@@ -59,8 +59,8 @@ class MainActivity : AppCompatActivity() {
                     createSession()
                 }
 
-                override fun onError() {
-                    Log.e("User", "Error")
+                override fun onError(throwable: Throwable) {
+                    Log.e("User", "Error: ${throwable.localizedMessage}")
                 }
             })
         }
@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity() {
                 leaveButton.isEnabled = true
             }
 
-            override fun onError() {
+            override fun onError(throwable: Throwable) {
                 showToast("Something went wrong")
             }
         })
@@ -137,8 +137,8 @@ class MainActivity : AppCompatActivity() {
                 leaveButton.isEnabled = true
             }
 
-            override fun onError() {
-                Log.e("Session", "Error")
+            override fun onError(throwable: Throwable) {
+                Log.e("Session", "Error: ${throwable.localizedMessage}")
             }
         })
     }
@@ -170,8 +170,8 @@ class MainActivity : AppCompatActivity() {
                 leaveButton.isEnabled = true
             }
 
-            override fun onError() {
-                Log.e("Invite", "Error")
+            override fun onError(throwable: Throwable) {
+                Log.e("Invite", "Error: ${throwable.localizedMessage}")
             }
         })
     }
@@ -190,8 +190,8 @@ class MainActivity : AppCompatActivity() {
                 deleteSessionIdentifier()
             }
 
-            override fun onError() {
-                Log.e("Leave", "Error")
+            override fun onError(throwable: Throwable) {
+                Log.e("Leave", "Error: ${throwable.localizedMessage}")
             }
         })
     }
@@ -212,8 +212,8 @@ class MainActivity : AppCompatActivity() {
                 leaveButton.isEnabled = true
             }
 
-            override fun onError() {
-                Log.e("Join", "Error")
+            override fun onError(throwable: Throwable) {
+                Log.e("Join", "Error: ${throwable.localizedMessage}")
             }
         })
     }

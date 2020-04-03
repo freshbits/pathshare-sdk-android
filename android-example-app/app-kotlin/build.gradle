@@ -51,6 +51,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.13'
-    implementation 'androidx.appcompat:appcompat:1.2.0-alpha01'
-    implementation 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.3.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0-beta01'
+    implementation 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.3.2'
 }
