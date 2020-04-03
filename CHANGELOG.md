@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.3.2 - 2020-04-03
+### Changed
+- Added better error handling
+
 ## 2.3.1 - 2020-01-31
 ### Changed
 - Added manufacturer specific support
