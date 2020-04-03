@@ -65,8 +65,8 @@ public class MainActivity extends Activity {
             }
 
             @Override
-            public void onError() {
-                Log.e("User", "Error");
+            public void onError(@NonNull Throwable throwable) {
+                Log.e("User", "Error: " + throwable.getLocalizedMessage());
             }
         }));
     }
@@ -118,8 +118,8 @@ public class MainActivity extends Activity {
                 }
 
                 @Override
-                public void onError() {
-                    Log.e("Session", "Error");
+                public void onError(@NonNull Throwable throwable) {
+                    Log.e("Session", "Error: " + throwable.getLocalizedMessage());
                 }
             });
 
@@ -157,8 +157,8 @@ public class MainActivity extends Activity {
             }
 
             @Override
-            public void onError() {
-                Log.e("Invite", "Error");
+            public void onError(@NonNull Throwable throwable) {
+                Log.e("Invite", "Error: " + throwable.getLocalizedMessage());
             }
         });
     }
@@ -197,8 +197,8 @@ public class MainActivity extends Activity {
                 }
 
                 @Override
-                public void onError() {
-                    Log.e("Join", "Error");
+                public void onError(@NonNull Throwable throwable) {
+                    Log.e("Join", "Error: " + throwable.getLocalizedMessage());
                 }
             });
         } catch (IllegalStateException e) {
@@ -224,8 +224,8 @@ public class MainActivity extends Activity {
                 }
 
                 @Override
-                public void onError() {
-                    Log.e("Leave", "Error");
+                public void onError(@NonNull Throwable throwable) {
+                    Log.e("Leave", "Error: " + throwable.getLocalizedMessage());
                 }
             });
         } catch (IllegalStateException e) {
@@ -323,7 +323,7 @@ public class MainActivity extends Activity {
             }
 
             @Override
-            public void onError() {
+            public void onError(@NonNull Throwable throwable) {
                 showToast("Something went wrong.");
             }
         });
@@ -335,6 +335,6 @@ public class MainActivity extends Activity {
     }
 
     private SharedPreferences getPreferences() {
-        return getApplicationContext().getSharedPreferences(SESSION_PREFERENCES, Context.MODE_MULTI_PROCESS);
+        return getApplicationContext().getSharedPreferences(SESSION_PREFERENCES, Context.MODE_PRIVATE);
     }
 }

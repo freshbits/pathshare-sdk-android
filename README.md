@@ -38,7 +38,7 @@ repositories {
 
 dependencies {
     ...
-    compile 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.3.1'
+    compile 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.3.2'
 }
 ```
 
@@ -102,7 +102,7 @@ Pathshare.client().saveUser("Candice", "me@email.com", "+12345678901", UserType.
     }
 
     @Override
-    public void onError() {
+    public void onError(@NonNull Throwable throwable) {
         // ...
     }
 });
@@ -115,7 +115,7 @@ Pathshare.client().saveUser("SDK User Android", "me@email.com", "+12345678901", 
         // ...
     }
 
-    override fun onError() {
+    override fun onError(throwable: Throwable) {
         // ...
     }
 })
@@ -265,7 +265,7 @@ session.inviteUser("Customer", UserType.CLIENT, "customer@email.com", "+12345678
         Log.d("URL", url.toString()); // => https://m.pathsha.re/12s83a
     }
 
-    public void onError() {
+    public void onError(@NonNull Throwable throwable) {
         // ...
     }
 });
@@ -279,7 +279,7 @@ session.inviteUser("Customer", UserType.CLIENT, "customer@me.com", "+12345678901
         Log.d("URL", url.toString()) // => https://m.pathsha.re/12s83a
     }
 
-    override fun onError() {
+    override fun onError(throwable: Throwable) {
         // ...
     }
 })
@@ -320,7 +320,7 @@ Pathshare.client().findSession(identifier, new SessionResponseListener() {
     }
 
     @Override
-    public void onError() { ... }
+    public void onError(@NonNull Throwable throwable) { ... }
 }
 ```
 
@@ -331,6 +331,6 @@ Pathshare.client().findSession(identifier, object: SessionResponseListener {
         session.sessionExpirationListener = SessionExpirationListener { ... }
     }
 
-    override fun onError() { ... }
+    override fun onError(throwable: Throwable) { ... }
 })
 ```
