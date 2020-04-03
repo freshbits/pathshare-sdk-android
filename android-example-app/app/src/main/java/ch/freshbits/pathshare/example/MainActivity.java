@@ -335,6 +335,6 @@ public class MainActivity extends Activity {
     }
 
     private SharedPreferences getPreferences() {
-        return getApplicationContext().getSharedPreferences(SESSION_PREFERENCES, Context.MODE_MULTI_PROCESS);
+        return getApplicationContext().getSharedPreferences(SESSION_PREFERENCES, Context.MODE_PRIVATE);
     }
 }

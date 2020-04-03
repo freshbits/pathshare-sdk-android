@@ -248,6 +248,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun preferences(): SharedPreferences {
-        return applicationContext.getSharedPreferences(SESSION_PREFERENCES, Context.MODE_MULTI_PROCESS)
+        return applicationContext.getSharedPreferences(SESSION_PREFERENCES, MODE_PRIVATE)
     }
 }
