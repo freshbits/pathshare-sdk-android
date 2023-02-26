@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.3.3 - 2023-02-26
+### Changed
+- Updated to support compileSdkVersion to 31
+- Minor improvements
+
 ## 2.3.2 - 2020-04-03
 ### Changed
 - Added better error handling
