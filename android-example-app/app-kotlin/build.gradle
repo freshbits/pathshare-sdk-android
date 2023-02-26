@@ -3,21 +3,23 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "ch.freshbits.pathshare.example"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 31
         versionCode 132
         versionName "2.3.2"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-
     packagingOptions {
-        exclude 'META-INF/DEPENDENCIES'
+        resources {
+            excludes += ['META-INF/DEPENDENCIES']
+        }
     }
+
 
     compileOptions {
         sourceCompatibility 1.8
@@ -41,6 +43,7 @@ android {
             minifyEnabled false
         }
     }
+    namespace 'ch.freshbits.pathshare.example'
 }
 
 repositories {
@@ -51,6 +54,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.13'
-    implementation 'androidx.appcompat:appcompat:1.2.0-beta01'
-    implementation 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.3.2'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.3.3'
 }
