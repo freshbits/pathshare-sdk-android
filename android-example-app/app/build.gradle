@@ -1,4 +1,6 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+}
 
 android {
     compileSdkVersion 31
@@ -29,13 +31,11 @@ android {
     buildTypes {
         debug {
             debuggable true
-            zipAlignEnabled false
             minifyEnabled false
         }
 
         release {
             debuggable false
-            zipAlignEnabled true
             minifyEnabled false
         }
     }
