@@ -3,14 +3,14 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
+    compileSdk 33
 
     defaultConfig {
         applicationId "ch.freshbits.pathshare.example"
         minSdkVersion 25
-        targetSdkVersion 31
         versionCode 132
         versionName "2.3.2"
+        targetSdkVersion 33
     }
     packagingOptions {
         resources {
