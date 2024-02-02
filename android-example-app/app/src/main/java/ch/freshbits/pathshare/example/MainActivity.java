@@ -2,10 +2,14 @@ package ch.freshbits.pathshare.example;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
@@ -131,10 +135,11 @@ public class MainActivity extends Activity {
     private void joinSession() {
         if (getSession().isExpired()) { return; }
 
-        if (hasLocationPermission()) {
+        if (hasLocationPermission() && hasAlarmPermission()) {
             performJoinSession();
         } else {
-            requestLocationPermission();
+            if (!hasLocationPermission()) { requestLocationPermission(); }
+            if (!hasAlarmPermission()) { requestAlarmPermission(); }
         }
     }
 
@@ -169,6 +174,27 @@ public class MainActivity extends Activity {
 
     private boolean hasLocationPermission() {
         return PermissionRequester.hasPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+    }
+
+    private void requestAlarmPermission() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            return;
+        }
+
+        Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+        startActivity(intent);
+    }
+
+    private boolean hasAlarmPermission() {
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.S || getAlarmManager().canScheduleExactAlarms();
+    }
+
+    private AlarmManager getAlarmManager() {
+        return (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
+    }
+
+    private Context getContext() {
+        return Pathshare.client().getContext();
     }
 
     @Override
