@@ -1,8 +1,12 @@
 package ch.freshbits.pathshare.example
 
+import android.app.AlarmManager
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -146,10 +150,11 @@ class MainActivity : AppCompatActivity() {
     private fun joinSession() {
         if (session.isExpired) return
 
-        if (hasLocationPermission()) {
+        if (hasLocationPermission() && hasAlarmPermission()) {
             performJoinSession()
         } else {
-            requestLocationPermission()
+            if (!hasLocationPermission()) { requestLocationPermission() }
+            if (!hasAlarmPermission()) { requestAlarmPermission() }
         }
     }
 
@@ -220,6 +225,26 @@ class MainActivity : AppCompatActivity() {
 
     private fun hasLocationPermission(): Boolean {
         return PermissionRequester.hasPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+    }
+
+    private fun requestAlarmPermission() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            return
+        }
+        val intent = Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM)
+        startActivity(intent)
+    }
+
+    private fun hasAlarmPermission(): Boolean {
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.S || getAlarmManager().canScheduleExactAlarms()
+    }
+
+    private fun getAlarmManager(): AlarmManager {
+        return getContext().getSystemService(ALARM_SERVICE) as AlarmManager
+    }
+
+    private fun getContext(): Context {
+        return Pathshare.client().context
     }
 
     private fun saveSessionIdentifier() {
