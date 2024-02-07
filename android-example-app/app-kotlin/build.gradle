@@ -54,5 +54,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.13'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.3.4'
+    implementation 'ch.freshbits.pathshare.sdk:pathshare-sdk:2.3.5'
 }
